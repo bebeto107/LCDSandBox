@@ -3,7 +3,6 @@
 #include <rcamera.h>
 #include <cstdlib>
 #include "Npc1.hpp"
-using namespace std;
 Npc1 npc; 
 int main (){
     InitWindow(1200, 800, "Proto-LCD SAND BOX");
@@ -20,7 +19,7 @@ int main (){
         .projection = CAMERA_PERSPECTIVE,
     };
     int cameraMode = CAMERA_FIRST_PERSON;
-    float sensitive = 0.5f;
+    float sensitive = 0.25f;
     DisableCursor();
     //--------------------------------------
     Vector3 modelposition;
@@ -31,7 +30,8 @@ int main (){
     bool visible_menu = true;
     //menu----------------------------------
     Vector2 Mouse;
-    Rectangle cbm1 = {100,280,800, 80};
+    Rectangle cbm1 = {100,280,1000, 80};
+    Rectangle cbm2 = {100,370,1000, 80};
 
     while (!WindowShouldClose())
     {
@@ -96,6 +96,7 @@ int main (){
             if (visible_menu == true)
             {
                 DrawRectangle(cbm1.x, cbm1.y, cbm1.width, cbm1.height, BLACK);
+                DrawRectangle(cbm2.x, cbm2.y, cbm2.width, cbm2.height, BLACK);
                 DrawText("LCD SAND BOX \n press Enter to start \n press Esc to quit", 100, 200, 80, WHITE);
 
             }
