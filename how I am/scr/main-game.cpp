@@ -3,11 +3,13 @@
 #include <rcamera.h>
 #include <cstdlib>
 #include "Npc1.hpp"
+#include "inventory.hpp"
 Npc1 npc; 
 int main (){
     InitWindow(1200, 800, "Proto-LCD SAND BOX");
     InitAudioDevice();
     SetTargetFPS(60);
+
 
     //camera settings----------------------
     Camera3D camera = {
@@ -24,15 +26,15 @@ int main (){
     //--------------------------------------
     Vector3 modelposition;
     Vector3 null {0.0f, 0.0f , 0.0f};
-    bool walk = true;
+    bool walk = false;
     //visble--------------------------------
     bool visible_gameplay = false;
     bool visible_menu = true;
+    bool visible_pMenu = false;
     //menu----------------------------------
     Vector2 Mouse;
-    Rectangle cbm1 = {100,280,1000, 80};
-    Rectangle cbm2 = {100,370,1000, 80};
 
+    
     while (!WindowShouldClose())
     {
 
@@ -49,7 +51,9 @@ int main (){
         if(IsKeyPressed(KEY_F2)){
             DisableCursor();
         }
-
+        if(IsKeyPressed(KEY_TAB)){
+            visible_pMenu = !visible_pMenu;
+        }
         float speed = IsKeyDown(KEY_LEFT_SHIFT) ? 15.0f : 5.0f;  
         Vector3 move = {
             (IsKeyDown(KEY_W) - IsKeyDown(KEY_S)) * speed * dt,  
@@ -73,11 +77,36 @@ int main (){
         {
             walk = !walk;
         }
-        if (CheckCollisionPointRec(Mouse, cbm1) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        if (CheckCollisionPointRec(Mouse, cbm1))
         {
-            visible_menu = false;
-            visible_gameplay = true;
+            cbm1.width = 1100;
+            if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                visible_menu = false;
+                visible_gameplay = true;
+
+            }
+            
+        }else{
+            cbm1.width = 1000;
         }
+        if (CheckCollisionPointRec(Mouse, cbm2))
+        {
+            cbm2.width = 1100;          
+        }else{
+            cbm2.width = 1000;
+        }
+        if (CheckCollisionPointRec(Mouse, cbmp1))
+        {
+            cbmp1.width = 700.0f;
+            if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                visible_pMenu = false;
+            }
+            
+        } else{
+            cbmp1.width = 650.0f;
+        }
+
+
         
         
         //Visuals
@@ -89,15 +118,22 @@ int main (){
                 BeginMode3D(camera);
                 DrawSphere(modelposition, 3.0f,RED);
                 DrawSphere(AImovs, 4.0f, DARKBLUE);
-                DrawGrid(100, 1.0f);
+                DrawGrid(600, 1.0f);
                 EndMode3D();
                 DrawText(TextFormat("cords:\n %f \n %f \n %f", camera.position.x, camera.position.y, camera.position.z), 80, 10, 20,RED);
             }
+            if (visible_pMenu == true && visible_menu == false){
+                DrawRectangle(0,0,600,800,BLACK);
+                DrawRectangle(cbmp1.x, cbmp1.y, cbmp1.width, cbmp1.height, DARKPURPLE);
+                DrawText("LCD SAND BOX \n press Tab to continue \n press Esc to quit", 0, 0, 40, WHITE);
+            }
             if (visible_menu == true)
             {
+
                 DrawRectangle(cbm1.x, cbm1.y, cbm1.width, cbm1.height, BLACK);
                 DrawRectangle(cbm2.x, cbm2.y, cbm2.width, cbm2.height, BLACK);
                 DrawText("LCD SAND BOX \n press Enter to start \n press Esc to quit", 100, 200, 80, WHITE);
+
 
             }
             DrawRectangle(Mouse.x, Mouse.y, 10,10, BLACK);
