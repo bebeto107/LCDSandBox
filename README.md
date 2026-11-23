@@ -1,2 +1,8 @@
 # LCDSandBox
-This is a sandbox game make using c++ and raylib, is idk just play man.
+This is a sandbox game make using c++ and raylib.
+road map 
+npc ai
+map selector
+radom events
+jump buttom(this is the hardest)
+spin
