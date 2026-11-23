@@ -1,9 +1,8 @@
 #include <iostream>
 #include <raylib.h>
-#include <rcamera.h>
-#include <cstdlib>
 #include "Npc1.hpp"
-#include "inventory.hpp"
+#include "colisions.hpp"
+#include "map.hpp"
 Npc1 npc; 
 int main (){
     InitWindow(1200, 800, "Proto-LCD SAND BOX");
@@ -65,18 +64,6 @@ int main (){
         Mouse = GetMousePosition();
         UpdateCameraPro(&camera, move, rot, 0.0f);
         modelposition = camera.position;
-        Vector3 AImovs{npc.x, 6.0 , npc.z};
-        if (npc.x <= 10 && walk == true)//redo from scratch beacause this is shit
-        {
-            npc.x += 0.05;
-        }else
-        {
-            npc.x -= 0.05;
-        }
-        if (npc.x >= 10)
-        {
-            walk = !walk;
-        }
         if (CheckCollisionPointRec(Mouse, cbm1))
         {
             cbm1.width = 1100;
@@ -112,13 +99,14 @@ int main (){
         //Visuals
         BeginDrawing();
             ClearBackground(GRAY);
+            
 
             if (visible_gameplay == true)
             {
                 BeginMode3D(camera);
                 DrawSphere(modelposition, 3.0f,RED);
-                DrawSphere(AImovs, 4.0f, DARKBLUE);
-                DrawGrid(600, 1.0f);
+                dev_map();
+                map1();
                 EndMode3D();
                 DrawText(TextFormat("cords:\n %f \n %f \n %f", camera.position.x, camera.position.y, camera.position.z), 80, 10, 20,RED);
             }

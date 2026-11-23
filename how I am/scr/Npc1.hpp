@@ -9,6 +9,9 @@ class Npc1
 
         float x = -10.0f;
         float z = 0.0f;
-        Vector3 AImovs {x, 4.0f, z};
+        Vector3 cord {x, 4.0f, z};
     };
 
+void moves(){
+    //movimentação
+}
