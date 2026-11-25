@@ -92,6 +92,16 @@ int main (){
         } else{
             cbmp1.width = 650.0f;
         }
+        if (CheckCollisionPointRec(Mouse, cbmp2))
+        {
+            cbmp2.width = 700.0f;
+            if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+               CloseWindow(); 
+            }
+            
+        } else{
+            cbmp2.width = 650.0f;
+        }
 
 
         
@@ -113,6 +123,7 @@ int main (){
             if (visible_pMenu == true && visible_menu == false){
                 DrawRectangle(0,0,600,800,BLACK);
                 DrawRectangle(cbmp1.x, cbmp1.y, cbmp1.width, cbmp1.height, DARKPURPLE);
+                DrawRectangle(cbmp2.x, cbmp2.y, cbmp2.width, cbmp2.height, DARKPURPLE);
                 DrawText("LCD SAND BOX \n press Tab to continue \n press Esc to quit", 0, 0, 40, WHITE);
             }
             if (visible_menu == true)
