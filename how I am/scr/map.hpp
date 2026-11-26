@@ -18,26 +18,26 @@ void map1(){
     if (map1_bool == true){
         ClearBackground(DARKBLUE);
         DrawSphere(npc.cord,4.0f, DARKPURPLE);
-        DrawCube(Vector3{0,-1,0}, 1000, 1, 1000, GRAY);
-        DrawGrid(1000, 1.0f);
+        DrawCube(Vector3{0,-1,0}, 500, 1, 500, GRAY);
+        DrawGrid(500, 1.0f);
 
-        DrawCube(Vector3{150,0,10},40,150,40,DARKBLUE);
-        DrawCubeWires({150,0,10}, 40, 150, 40, BLACK);
-        DrawCube(Vector3{150,0,60},30,100,40,MAROON);
-        DrawCubeWires({150,0,60}, 30, 100, 40, BLACK);
+        DrawCube(Vector3{50,0,10},40,30,40,DARKBLUE);
+        DrawCubeWires({50,0,10}, 40, 30, 40, BLACK);
+        DrawCube(Vector3{50,0,60},30,30,40,MAROON);
+        DrawCubeWires({50,0,60}, 30, 30, 40, BLACK);
         DrawSphere(Vector3{0,4500,0},4300, ORANGE);
-        DrawCube(Vector3{150,0,130},30,120,40,DARKBROWN);
-        DrawCubeWires({150,0,130}, 30, 120, 40, BLACK);
+        DrawCube(Vector3{50,0,130},30,30,40,DARKBROWN);
+        DrawCubeWires({50,0,130}, 30, 30, 40, BLACK);
 
-        DrawCube(Vector3{250,0,80},30,200,40,MAROON);
-        DrawCubeWires({250,0,80}, 30, 200, 40, BLACK);
-        DrawCube(Vector3{250,0,10},40,250,40,DARKBLUE);
-        DrawCubeWires({250,0,10}, 40, 250, 40, BLACK);
+        DrawCube(Vector3{100,0,80},30,40,40,MAROON);
+        DrawCubeWires({100,0,80}, 30, 40, 40, BLACK);
+        DrawCube(Vector3{100,0,10},40,40,40,DARKBLUE);
+        DrawCubeWires({100,0,10}, 40, 40, 40, BLACK);
 
-        DrawCube(Vector3{-250,0,100},30,200,40,MAROON);
-        DrawCubeWires({-250,0,100}, 30, 200, 40, BLACK);
-        DrawCube(Vector3{-250,0,10},40,250,40,DARKBLUE);
-        DrawCubeWires({-250,0,10}, 40, 250, 40, BLACK);
+        DrawCube(Vector3{-80,0,100},30,40,40,MAROON);
+        DrawCubeWires({-80,0,100}, 30, 40, 40, BLACK);
+        DrawCube(Vector3{-80,0,10},40,40,40,DARKBLUE);
+        DrawCubeWires({-80,0,10}, 40, 40, 40, BLACK);
         
     }
 
