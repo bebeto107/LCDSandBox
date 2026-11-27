@@ -32,7 +32,9 @@ int main (){
     bool visible_pMenu = false;
     //menu----------------------------------
     Vector2 Mouse;
-
+    Model map = LoadModelFromMesh(GenMeshCube(500, 1, 500));
+    Texture2D grass = LoadTexture("texture/grass.png");
+    map.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = grass;
     
     while (!WindowShouldClose())
     {
@@ -117,6 +119,7 @@ int main (){
                 DrawSphere(modelposition, 3.0f,RED);
                 dev_map();
                 map1();
+                DrawModel(map, Vector3{0,-1,0}, 2, WHITE);
                 EndMode3D();
                 DrawText(TextFormat("cords:\n %f \n %f \n %f", camera.position.x, camera.position.y, camera.position.z), 80, 10, 20,RED);
             }
@@ -138,6 +141,8 @@ int main (){
             DrawRectangle(Mouse.x, Mouse.y, 10,10, BLACK);
         EndDrawing();
     }
+     UnloadModel(map);
+     UnloadTexture(grass);
     
     CloseWindow();
     return 0;
